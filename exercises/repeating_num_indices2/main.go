@@ -35,6 +35,7 @@ func indexesFor(mid, i, j int, dir searchDir) (nextI, nextJ int) {
 	case SearchRight:
 		nextI, nextJ = mid + 1, j
 	case SearchLeft:
+
 		nextI, nextJ = i, mid - 1
 	}
 	return
