@@ -38,7 +38,6 @@ func reverseIterative(root *Node) {
 	}
 }
 
-
 func main() {
 	n1 := &Node{nil, "c"}
 	n2 := &Node{n1, "b"}
