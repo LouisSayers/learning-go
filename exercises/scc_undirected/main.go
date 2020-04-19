@@ -31,6 +31,27 @@ func DFS(n *Node, componentMap map[*Node]int, cc int) {
 	}
 }
 
+func DFSIterative(n *Node, componentMap map[*Node]int, cc int) {
+	stack := []*Node{n}
+
+	for len(stack) != 0 {
+		lastIndex := len(stack) - 1
+		nextItem := stack[lastIndex]
+		stack = stack[:lastIndex]
+
+		// skip if the node is mapped to a connected component
+		if componentMap[nextItem] != 0 {
+			continue
+		}
+
+		// otherwise, add this item to the cc, process the out nodes
+		componentMap[nextItem] = cc
+		for _, child := range nextItem.out {
+			stack = append(stack, child)
+		}
+	}
+}
+
 func PrintCC(arr []*Node) {
 	componentMap := make(map[*Node]int)
 	var cc int
@@ -41,7 +62,7 @@ func PrintCC(arr []*Node) {
 		}
 
 		cc++
-		DFS(node, componentMap, cc)
+		DFSIterative(node, componentMap, cc)
 	}
 
 	ccs := make(map[int][]*Node)
