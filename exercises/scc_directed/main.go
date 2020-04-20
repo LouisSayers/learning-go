@@ -41,6 +41,7 @@ func Reachable(n *Node, n2 *Node, visited map[*Node]bool) bool {
 	return false
 }
 
+// O(n^3 + en^2)
 func ComputerSCCs(nodes []*Node) map[int][]*Node {
 	results := make(map[int][]*Node)
 	computed := make(map[*Node]bool)
